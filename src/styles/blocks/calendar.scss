@@ -9,30 +9,15 @@
 }
 
 @for $i from 28 through 31 {
-
   .calendar-#{$i} {
 
     @for $j from 1 through $i {
       & :nth-child(#{$j}) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: $cell-size;
-        height: $cell-size;
-
-        border: 1px solid #000;
-
-        background-color: #eee;
+        @include default-cell-styles;
 
         &:hover {
-          position: relative;
-
-          background-color: pink ;
-
-          transition: background-color 0.5s, transform 0.5s;
-          transform: translate(0 , -20px);
+          @include hovered-cell-styles;
         }
-
       }
 
       & :nth-child(#{$j})::after {
@@ -41,8 +26,6 @@
     }
   }
 }
-
-$days: ("tue": 1, "wed": 2, "thu": 3, "fri": 4, "sat": 5, "sun": 6);
 
 @each $day,$marg in $days {
   .calendar-#{$day} :first-child {

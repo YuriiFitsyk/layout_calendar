@@ -1,0 +1,17 @@
+@mixin default-cell-styles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $cell-size;
+  height: $cell-size;
+
+  border: 1px solid #000;
+
+  background-color: #eee;
+}
+
+@mixin hovered-cell-styles {
+  background-color: pink ;
+  transition: background-color 0.5s, transform 0.5s;
+  transform: translate(0 , -20px);
+}
