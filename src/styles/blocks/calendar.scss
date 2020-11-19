@@ -1,0 +1,51 @@
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+
+  margin: 15vh auto;
+
+  width: $cell-size * 7 + $margins-between-cells * 6;
+}
+
+@for $i from 28 through 31 {
+
+  .calendar-#{$i} {
+
+    @for $j from 1 through $i {
+      & :nth-child(#{$j}) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $cell-size;
+        height: $cell-size;
+
+        border: 1px solid #000;
+
+        background-color: #eee;
+
+        &:hover {
+          position: relative;
+
+          background-color: pink ;
+
+          transition: background-color 0.5s, transform 0.5s;
+          transform: translate(0 , -20px);
+        }
+
+      }
+
+      & :nth-child(#{$j})::after {
+        content: "#{$j}";
+      }
+    }
+  }
+}
+
+$days: ("tue": 1, "wed": 2, "thu": 3, "fri": 4, "sat": 5, "sun": 6);
+
+@each $day,$marg in $days {
+  .calendar-#{$day} :first-child {
+    margin-left: ($cell-size + $margins-between-cells)  * $marg;
+  }
+}
