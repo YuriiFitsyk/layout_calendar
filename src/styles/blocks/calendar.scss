@@ -1,11 +1,11 @@
 .calendar {
   display: flex;
   flex-wrap: wrap;
-  gap: 1px;
+  gap: $cells-margin;
 
   margin: 15vh auto;
 
-  width: $cell-size * 7 + $margins-between-cells * 6;
+  width: $cell-size * $days-in-line + $cells-margin * ($days-in-line - 1);
 }
 
 @for $i from 28 through 31 {
@@ -29,6 +29,6 @@
 
 @each $day,$marg in $days {
   .calendar-#{$day} :first-child {
-    margin-left: ($cell-size + $margins-between-cells)  * $marg;
+    margin-left: ($cell-size + $cells-margin)  * $marg;
   }
 }
