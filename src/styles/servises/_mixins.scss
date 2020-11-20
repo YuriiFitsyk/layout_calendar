@@ -8,11 +8,12 @@
   border: 1px solid #000;
 
   background-color: #eee;
+
+  transition: background-color 0.5s, transform 0.5s;
 }
 
 @mixin hovered-cell-styles {
   background-color: pink ;
   cursor: pointer;
-  transition: background-color 0.5s, transform 0.5s;
   transform: translate(0 , -20px);
 }
